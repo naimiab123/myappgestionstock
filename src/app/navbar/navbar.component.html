@@ -1,0 +1,38 @@
+<div>
+  <!-- <div class="pull-right">
+    <button class="btn btn-outline-primary btn-sm" (click)="logout()">Log Out</button>
+  </div> -->
+  
+  
+  <nav class="navbar navbar-expand-sm bg-light">
+       <a href="" data-toggle="collapse" (click)="afficherSideBar()">
+          <button type="button" id="sidebarCollapse" class="btn btn-primary mt-2">
+              <i class="fas fa-align-justify"></i><span>  sidebar</span>
+            </button>
+      </a> 
+     
+          <i class="glyphicon glyphicon-search"></i>
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 3</a>
+      </li>
+      
+        
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a  class="nav-link" routerLink="/login">Login</a>
+            <!-- <a class="btn" *ngIf="isAuthenticated()" (click)="logout()" class="nav-link" routerLink="login">Logout</a> -->
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/register">Register</a>
+        </li>
+    </ul>
+  </nav>
+</div>

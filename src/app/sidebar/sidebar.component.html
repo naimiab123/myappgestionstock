@@ -1,20 +1,21 @@
 <nav class="hidden-xs-down bg-faded sidebar">
   <ul class="nav nav-pills flex-column">
     <li class="nav-item">
-      <!-- <a class="nav-link"
-        routerLink="dashboard"
-        *ngIf="hasRoleAdmin()"
-        routerLinkActive="active">Dashboard</a> -->Dashboard
+       <a class="nav-link"
+        routerLink="/dashboard"       
+        routerLinkActive="active">Dashboard</a>
     </li>
     <li class="nav-item">
-      <!-- <a class="nav-link" routerLink="product"
-        *ngIf="hasRoleUser()"
-        routerLinkActive="active">Produits</a> -->Produits
+       <a class="nav-link" routerLink="product"
+     
+        routerLinkActive="active">Products</a> 
     </li>
     <li class="nav-item">
       <!-- <a class="nav-link" routerLink="user"
       *ngIf="hasRoleAdmin()"
-      routerLinkActive="active">Utilisateurs</a> -->Utilisateurs
+      routerLinkActive="active">Utilisateurs</a> --><a class="nav-link" href="#">Utilisateurs</a>
     </li>
+   
+    <li><a class="nav-link" href="#">Export</a></li>
   </ul>
 </nav>

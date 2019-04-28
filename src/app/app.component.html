@@ -1,13 +1,14 @@
 
+   
   <div class="row">
-    <div class="col-lg-2"  *ngIf="showHideSideBar">
+    <div class="col-md-2 mt-3"  *ngIf="showHideSideBar">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="col-lg-10">
-      
-        <app-navbar [showSideBar]="showHideSideBar"  (showSidebarChange)="onShowSideBarChange($event)"></app-navbar>
-
-        <app-content></app-content>
+    <div class="col-md-10">    
+        <app-navbar [showSideBar]="showHideSideBar"  (showSidebarChange)="onShowSideBarChange($event)"></app-navbar>  
+        <div class="container body">
+            <router-outlet></router-outlet>
+          </div>
     </div>
   </div>
 

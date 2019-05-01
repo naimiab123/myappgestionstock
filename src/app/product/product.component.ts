@@ -40,8 +40,8 @@ export class ProductComponent implements OnInit {
  }, error => console.log(error));
   }
   deleteProduct() {
-    console.log(this.selectedProduct.ref);
-   this.productService.deleteProduct(this.selectedProduct.ref).subscribe(data => {
+    console.log(this.selectedProduct.id);
+   this.productService.deleteProduct(this.selectedProduct.id).subscribe(data => {
      // console.log(data);
     this.selectedProduct = new Product();
     this.loadProduct();
@@ -62,6 +62,7 @@ export class ProductComponent implements OnInit {
   }
   createForm() {
     this.productForm = this.fb.group({
+      id: '',
       ref: ['', Validators.required],
       quantity: '',
       unitPrice: ''

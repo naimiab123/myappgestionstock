@@ -24,8 +24,8 @@ export class ProduitService {
   return this.http.put(API_URLS.PRODUCTS_URL, product);
   }
 
-  deleteProduct(ref: string) {
-  return this.http.delete(API_URLS.PRODUCTS_URL + '/' + ref);
+  deleteProduct(id: number) {
+  return this.http.delete(API_URLS.PRODUCTS_URL + '/' + id);
   }
 
 }

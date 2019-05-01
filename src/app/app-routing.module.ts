@@ -4,10 +4,19 @@ import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+<<<<<<< HEAD
 import { HomeComponent } from './home/home.component';
+=======
+import { ProductResolverService } from './resolver/product-resolver.service';
+>>>>>>> crud_product
 
 const routes: Routes = [
-  {path: 'product', component: ProductComponent},
+  {path: 'product',
+  component: ProductComponent,
+ resolve: {
+   products: ProductResolverService
+  }
+},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
@@ -17,6 +26,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ProductResolverService]
 })
 export class AppRoutingModule { }

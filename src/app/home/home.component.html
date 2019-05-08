@@ -1,3 +1,12 @@
-<p>
-  home works!
-</p>
+<div class="row">
+  <div class="col-md-2 mt-3"  *ngIf="showHideSideBar">
+      <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-md-10">    
+      <app-navbar
+       [showSideBar]="showHideSideBar"
+        (showSidebarChange)="onShowSideBarChange($event)">
+      </app-navbar>  
+        <app-content></app-content>       
+  </div>
+</div>

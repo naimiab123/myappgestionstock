@@ -1,21 +1,24 @@
-<nav class="hidden-xs-down bg-faded sidebar">
+<div class="container">
+<nav class="hidden-xs-down bg-faded sidebar" style="background-color:#AFEEEE">
   <ul class="nav nav-pills flex-column">
     <li class="nav-item">
-       <a class="nav-link"
-        routerLink="/dashboard"       
+       <a class="nav-link" 
+       [routerLink]="[{outlets:{contentOulet:'dashboard'}}]"  
+       *ngIf="hasRoleUser()"    
         routerLinkActive="active">Dashboard</a>
     </li>
     <li class="nav-item">
-       <a class="nav-link" routerLink="product"
-     
+       <a class="nav-link" 
+       [routerLink]="[{outlets:{contentOulet:'product'}}]" 
+       *ngIf="hasRoleUser()"           
         routerLinkActive="active">Products</a> 
     </li>
     <li class="nav-item">
-      <!-- <a class="nav-link" routerLink="user"
-      *ngIf="hasRoleAdmin()"
-      routerLinkActive="active">Utilisateurs</a> --><a class="nav-link" href="#">Utilisateurs</a>
+      <a class="nav-link"   
+       [routerLink]="[{outlets:{contentOulet:'user'}}]" *ngIf="hasRoleAdmin()" routerLinkActive="active">Utilisateurs</a>
     </li>
    
     <li><a class="nav-link" href="#">Export</a></li>
   </ul>
 </nav>
+</div>

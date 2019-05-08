@@ -1,0 +1,112 @@
+<ng-container *ngIf="data; else loading">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+              <div class="card ">
+                  <div class="card-header bg-info text-white">
+                   {{title}}
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Special  treatment</h5>
+                    <table class="table table-striped table-secondary">
+                      <thead>
+                         <tr>
+                          <th *ngFor="let dataModel of dataModelList">{{dataModel.columnReference}}</th>
+                          
+                          <th><button class="btn btn-outline-primary" (click)="operation = 'add'; init();" ><i class="fa fa-plus" aria-hidden="true"></i> ADD</button></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of data">
+                            <td *ngFor="let dataModel of dataModelList">{{item[dataModel.columnName]}}</td>
+                          <td>
+                            <button class="btn btn-outline-danger" (click)="operation = 'remove'; selectedItem =item;"><i class="fas fa-trash-alt"></i> Remove</button>
+                            <button class="btn btn-outline-success" (click)="operation = 'edit'; selectedItem = item;" ><i class="far fa-edit"></i> Edit</button></td>
+                        </tr> 
+                        
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+          </div>
+          
+          <div class="col-lg-5">
+              <div class="card">
+                  <div class="card-header bg-info text-white">
+                    {{
+                      operation == 'add'? 'Add Product' :
+                      operation == 'remove'? 'Delete-Product':
+                      operation == 'edit'? 'Modify Product': ''
+                    }}
+                    
+                  </div>
+                  <div class="card-body">
+        
+                    <h5 class="card-title">Special Form treatment</h5>
+        
+                   <div *ngIf="operation == 'add' || operation == 'edit'">
+    
+                       <form [formGroup]="crudForm">
+    
+                              <div *ngFor="let dataModel of dataModelList" [ngSwitch]="dataModel.dataType">
+    
+                                  <div class="form-group"  *ngIf="!dataModel.readonly">
+    
+                                      <label>{{dataModel.columnReference}}:</label>  
+          
+                                     <input  *ngSwitchCase="'string'" type="text" class="form-control"
+                                              formControlName="{{dataModel.columnName}}"
+                                          [(ngModel)]="selectedItem[dataModel.columnName]"/>
+          
+                                       <input *ngSwitchCase="'number'" type="number" class="form-control" 
+                                            formControlName="{{dataModel.columnName}}"
+                                            [(ngModel)]="selectedItem[dataModel.columnName]"/>
+                                  </div>  
+    
+                              </div>
+    
+                             
+                            <!-- <div class="alert alert-danger" *ngIf="productForm.controls['ref'].invalid &&
+                                                                   (productForm.controls['ref'].touched || productForm.controls['ref'].dirty)">
+                                Reference est obligatoire
+                              </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantity</label>  
+                                <input type="number" class="form-control" formControlName="quantity"  [(ngModel)] = "selectedProduct.quantity"/>
+                              </div>
+                              
+                              <div class="form-group">
+                                  <label for="unitPrice">Unit Price</label>  
+                                  <input type="number" class="form-control" formControlName="unitPrice"  [(ngModel)] = "selectedProduct.unitPrice"/>
+                              </div> -->
+                                <button class="btn btn-success" type="submit" [disabled]="crudForm.prestine || crudForm.invalid"
+                                              (click)=" operation == 'add'? add() : 
+                                                        operation == 'edit'? update(): ''">
+                                        {{ 
+                                          operation == 'add'? 'Add' :                                 
+                                          operation == 'edit'? 'Modify': ''}}
+                                      </button>
+                        </form> 
+              
+                    </div> 
+                       <div *ngIf="operation == 'remove'">
+                          <p class="card-title">
+                          <label class="badge badge-secondary">Reference: {{selectedItem.id}}</label>  
+                          </p>
+                          <p>Voulez vous supprimer ce produit</p>
+                          <button class="btn btn-danger" [disabled]="!selectedItem.id" (click)="delete()">Delete-Product</button>
+        
+                        </div> 
+                    
+                  </div>
+                </div>
+          </div>
+        </div>
+        </div>
+    
+
+</ng-container>
+<ng-template>
+  loading ...
+</ng-template>

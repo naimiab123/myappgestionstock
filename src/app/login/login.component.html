@@ -1,3 +1,38 @@
-<p>
-  login works!
-</p>
+<div class="container mt-5">
+  <div class="col-md-8 offset-md-2">
+<div class="card border border-dark rounded">
+  <div class="card-header bg-secondary text-white text-center">
+    Login
+  </div>
+  <div class="card-body">
+   
+    <div class="imgcontainer">
+      <img src="/assets/images/sotck-gest.jpg" alt="Avatar" class="avatar img-responsive">
+    </div>
+    <form [formGroup]="loginForm" (submit)="login()">
+      <div class="container">
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user"></i></span></div>
+        <input type="text" class="form-control fa fa-user" id="username" name="username" formControlName="username" [(ngModel)]="credentials.username"  placeholder="Username">       
+       
+      </div>
+
+
+
+      <div class="input-group mb-3">
+   
+        <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-key"></i></span>
+      </div>
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password" formControlName="password" [(ngModel)]="credentials.password">
+      
+      </div>
+      
+      <button type="submit" class="btn btn-outline-primary">Sign in</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
